@@ -1,0 +1,33 @@
+spring.oauth2.resource:
+  id: cloud_controller
+  jwt:
+    keyUri: ${vcap.services.sso.credentials.tokenKey:}
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.trustedanalytics: DEBUG
+    nats.client: DEBUG
+
+gathering.triggerExpression: 0/15 * * * * ?     #0 0 0 29 2 ?
+
+security:
+  ignored: /open,/*.js,/sdoc.jsp,/api-docs,/api-docs/default/*,/images/*,/lib/*,/css/*
+
+services:
+  store:
+    baseUrl: http://${vcap.services.router-metrics-store.credentials.hostname:localhost}
+    apiPort: ${vcap.services.router-metrics-store.credentials.ports.8086/tcp:8086}
+    username: root
+    password: root
+    groupingInterval: 2m
+    rowCountLimit: 50
+  gorouter:
+      hosts: #for local development use only (remember to set ssh tunnels)
+             http://127.0.0.1:18080 http://127.0.0.1:28080
+      username: ${vcap.services.gorouter-provider.credentials.username:router}
+      password: ${vcap.services.gorouter-provider.credentials.password:c1oudc0w}
+      connectTimeout: 300
+      readTimeout: 3000
+
+nats.connection: ${vcap.services.nats-provider.credentials.url:nats://nats:c1oudc0w@10.10.3.10:4222}

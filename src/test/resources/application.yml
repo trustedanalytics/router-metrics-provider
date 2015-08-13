@@ -1,0 +1,7 @@
+security.ignored: /**
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.trustedanalytics: DEBUG
+

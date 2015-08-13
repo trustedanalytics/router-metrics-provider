@@ -1,0 +1,12 @@
+---
+applications:
+- name: router-metrics-provider
+  memory: 512M
+  instances: 1
+  host: router-metrics-provider
+  path: target/router-metrics-provider-${version}.jar
+  services:
+  - router-metrics-store
+  - sso
+  - nats-provider
+  - gorouter-provider
