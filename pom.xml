@@ -94,9 +94,9 @@
     <properties>
         <start-class>org.trustedanalytics.routermetrics.Application</start-class>
 	<jacoco-measurement-instructions>0.2303</jacoco-measurement-instructions>   
-        <jacoco-measurement-branches>0.3896</jacoco-measurement-branches>           
-        <jacoco-measurement-lines>0.3157</jacoco-measurement-lines>                 
-        <jacoco-measurement-classes>0.9999</jacoco-measurement-classes>             
+        <jacoco-measurement-branches>0.0392</jacoco-measurement-branches>           
+        <jacoco-measurement-lines>0.3896</jacoco-measurement-lines>                 
+        <jacoco-measurement-classes>0.3157</jacoco-measurement-classes>             
     </properties>
 
     <build>
