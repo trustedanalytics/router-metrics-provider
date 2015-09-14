@@ -10,3 +10,5 @@ applications:
   - sso
   - nats-provider
   - gorouter-provider
+  env:
+    VERSION: ${version}
