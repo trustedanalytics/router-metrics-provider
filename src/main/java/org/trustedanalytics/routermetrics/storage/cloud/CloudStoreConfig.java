@@ -35,6 +35,6 @@ public class CloudStoreConfig {
         
         return new InfluxLoadStore(url, storeProperties.getUsername(),
             storeProperties.getPassword(), storeProperties.getGroupingInterval(),
-            storeProperties.getRowCountLimit());
+            storeProperties.getTimeLimit());
     }
 }

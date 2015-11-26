@@ -49,7 +49,7 @@ public class InfluxLoadStoreTests {
         when(influxDb.describeDatabases())
             .thenReturn(Arrays.asList(new Database("trustedanalytics-global-metrics")));
 
-        sut = new InfluxLoadStore(influxDb, "1m", "100");
+        sut = new InfluxLoadStore(influxDb, "1m", "4h");
 
         verify(influxDb, never()).createDatabase("trustedanalytics-global-metrics");
     }
@@ -60,7 +60,7 @@ public class InfluxLoadStoreTests {
         when(influxDb.describeDatabases())
             .thenReturn(Arrays.asList());
 
-        sut = new InfluxLoadStore(influxDb, "1m", "100");
+        sut = new InfluxLoadStore(influxDb, "1m", "4h");
 
         verify(influxDb, times(1)).createDatabase("trustedanalytics-global-metrics");
     }
@@ -70,7 +70,7 @@ public class InfluxLoadStoreTests {
 
         final double TEST_VALUE = 0.1;
 
-        sut = new InfluxLoadStore(influxDb, "1m", "100");
+        sut = new InfluxLoadStore(influxDb, "1m", "4h");
         sut.save(TEST_VALUE);
 
         ArgumentCaptor<Serie> argument = ArgumentCaptor.forClass(Serie.class);

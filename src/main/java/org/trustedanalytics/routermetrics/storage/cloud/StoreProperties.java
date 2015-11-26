@@ -31,5 +31,5 @@ public class StoreProperties {
     private String username; // NOSONAR
     private String password; // NOSONAR
     private String groupingInterval; // NOSONAR
-    private String rowCountLimit; // NOSONAR
+    private String timeLimit; // NOSONAR
 }

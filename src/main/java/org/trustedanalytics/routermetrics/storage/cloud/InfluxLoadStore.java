@@ -36,24 +36,20 @@ public class InfluxLoadStore implements LoadStore {
     private static final String SERIE_NAME = "gorouterMetrics";
     private static final String COLUMN_NAME = "loadPerSec";
     private final String groupingInterval;
-    private final String rowCountLimit;
+    private final String timeLimit;
 
     private InfluxDB store;
 
-    public InfluxLoadStore(InfluxDB store, String groupingInterval, String rowCountLimit) {
+    public InfluxLoadStore(InfluxDB store, String groupingInterval, String timeLimit) {
         this.store = store;
         this.groupingInterval = groupingInterval;
-        this.rowCountLimit = rowCountLimit;
+        this.timeLimit = timeLimit;
         initializeDatabase();
     }
 
     public InfluxLoadStore(String apiUrl, String username, String password, String groupingInterval,
-        String rowCountLimit) {
-
-        this.store = InfluxDBFactory.connect(apiUrl, username, password);
-        this.groupingInterval = groupingInterval;
-        this.rowCountLimit = rowCountLimit;
-        initializeDatabase();
+        String timeLimit) {
+        this(InfluxDBFactory.connect(apiUrl, username, password), groupingInterval, timeLimit);
     }
 
     private void initializeDatabase() {
@@ -94,14 +90,14 @@ public class InfluxLoadStore implements LoadStore {
     }
 
     @Override public List<LoadPerSecRecord> read() {
-        return read(SERIE_NAME, COLUMN_NAME, groupingInterval, rowCountLimit);
+        return read(SERIE_NAME, COLUMN_NAME, groupingInterval, timeLimit);
     }
 
     private List<LoadPerSecRecord> read(String serieName, String key, String groupingInterval,
-        String rowCountLimit) {
+        String timeLimit) {
 
-        String query = String.format("select mean(%s) from %s group by time (%s) limit %s",
-            key, serieName, groupingInterval, rowCountLimit);
+        String query = String.format("select mean(%s) from %s where time > now() - %s group by time (%s)",
+            key, serieName, timeLimit, groupingInterval);
         LOG.debug(query);
 
         List<Serie> queryResult = store.query(DATABASE_NAME, query, TimeUnit.MILLISECONDS);

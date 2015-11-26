@@ -21,7 +21,7 @@ services:
     username: root
     password: root
     groupingInterval: 2m
-    rowCountLimit: 50
+    timeLimit: 4h
   gorouter:
       hosts: #for local development use only (remember to set ssh tunnels)
              http://127.0.0.1:18080 http://127.0.0.1:28080
