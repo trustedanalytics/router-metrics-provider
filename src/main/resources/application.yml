@@ -31,3 +31,6 @@ services:
       readTimeout: 3000
 
 nats.connection: ${vcap.services.nats-provider.credentials.url:nats://nats:c1oudc0w@10.10.3.10:4222}
+
+endpoints.enabled: false
+endpoints.health.enabled: true

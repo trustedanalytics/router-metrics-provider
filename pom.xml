@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>router-metrics-provider</artifactId>
-    <version>0.4.6</version>
+    <version>0.4.7</version>
 
     <parent>
         <groupId>org.trustedanalytics</groupId>
@@ -21,6 +21,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
@@ -67,10 +73,10 @@
 
     <properties>
         <start-class>org.trustedanalytics.routermetrics.Application</start-class>
-	<jacoco-measurement-instructions>0.2303</jacoco-measurement-instructions>   
-        <jacoco-measurement-branches>0.0392</jacoco-measurement-branches>           
-        <jacoco-measurement-lines>0.3896</jacoco-measurement-lines>                 
-        <jacoco-measurement-classes>0.3157</jacoco-measurement-classes>             
+	<jacoco-measurement-instructions>0.2303</jacoco-measurement-instructions>
+        <jacoco-measurement-branches>0.0392</jacoco-measurement-branches>
+        <jacoco-measurement-lines>0.3896</jacoco-measurement-lines>
+        <jacoco-measurement-classes>0.3157</jacoco-measurement-classes>
     </properties>
 
     <build>
@@ -146,7 +152,7 @@
                     <includes>
                         <include>src/**/*.java</include>
                         <include>license/*.sh</include>
-                    </includes>                       
+                    </includes>
                     <mapping>
                         <java>JAVADOC_STYLE</java>
                         <sh>SCRIPT_STYLE</sh>
