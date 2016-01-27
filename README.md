@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/trustedanalytics/router-metrics-provider.svg?branch=master)](https://travis-ci.org/trustedanalytics/router-metrics-provider)
+
 # router-metrics
 Providing global load metrics. 
 
