@@ -18,8 +18,11 @@ package org.trustedanalytics.routermetrics.rest;
 import org.trustedanalytics.routermetrics.gathering.LatencyCollector;
 import org.trustedanalytics.routermetrics.storage.LoadPerSecRecord;
 import org.trustedanalytics.routermetrics.storage.LoadStore;
+
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -40,12 +43,14 @@ public class MetricsController {
         this.latencyCollector = latencyCollector;
     }
 
-    @RequestMapping(LOAD_PER_SEC_URL)
+    @ApiOperation("Get load per second time series")
+    @RequestMapping(value = LOAD_PER_SEC_URL, method = RequestMethod.GET)
     public List<LoadPerSecRecord> loadChart() {
         return loadStore.read();
     }
 
-    @RequestMapping(LATENCY_HIST_URL)
+    @ApiOperation("Get latency histograms")
+    @RequestMapping(value = LATENCY_HIST_URL, method = RequestMethod.GET)
     public Map<String, Map<String, Double>> latencyHistogram() {
         return latencyCollector.getLatencyHistograms();
     }

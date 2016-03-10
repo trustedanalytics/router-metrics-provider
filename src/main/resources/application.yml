@@ -12,7 +12,7 @@ logging:
 gathering.triggerExpression: 0/15 * * * * ?     #0 0 0 29 2 ?
 
 security:
-  ignored: /open,/*.js,/sdoc.jsp,/api-docs,/api-docs/default/*,/images/*,/lib/*,/css/*
+  ignored: /open,/sdoc.jsp,/*.js,/api-docs,/api-docs/default/*,/images/*,/lib/*,/css/*,/v2/api-docs
 
 services:
   store:
